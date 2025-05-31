@@ -5,8 +5,8 @@ if(process.env.NODE_ENV != "production"){
 const express=require("express");
 const app=express();
 const mongoose=require("mongoose");
-// const mongoose_url="mongodb://127.0.0.1:27017/wanderlust";
-const dbUrl=process.env.ATLAS_URL;
+const mongoose_url="mongodb://127.0.0.1:27017/wanderlust";
+// const dbUrl=process.env.ATLAS_URL;
 
 
 // const Listing=require("./models/listing");
@@ -53,11 +53,11 @@ main().then(()=>{
     console.log(err);
 })
 async function main() {
-    await mongoose.connect(dbUrl);
+    await mongoose.connect(mongoose_url);
 }
 
 const store=MongoStore.create({
-    mongoUrl:dbUrl,
+    mongoUrl:mongoose_url,
     crypto: {
         secret: process.env.SECRET
       },
